@@ -1,0 +1,119 @@
+.form-min {
+	border: 0;
+	outline: 0;
+	background: white !important;
+	border-bottom: 1px solid gray;
+}
+
+.form-min:focus {
+	border-bottom: 2px solid green;
+}
+
+.btn-tutup {
+	color: #000;
+	background-color: #f0f0f0 !important;
+	border-color: #f0f0f0 !important;
+	box-shadow: none;
+}
+.btn-tutup:hover {
+	color: #fff;
+	background-color: #dc3545 !important;
+	border-color: #dc3545 !important;
+	box-shadow: none;
+}
+
+.btn-reset {
+	color: #000;
+	background-color: #e9ecef !important;
+	border-color: #ced4da !important;
+	box-shadow: none;
+}
+.btn-reset:hover {
+	color: #fff;
+	background-color: #dc3545 !important;
+	border-color: #dc3545 !important;
+	box-shadow: none;
+}
+
+.nav-drop:focus {
+	color: white !important;
+	background-color: #dc3545 !important;
+}
+
+input.invalid {
+	border-bottom: 2px solid #dc3545;
+}
+
+.bg-bungaraya {
+	background-color: #001f3f !important;
+}
+
+.bg-dayun {
+	background-color: #ff851b !important;
+}
+
+.bg-gasib {
+	background-color: #0074d9 !important;
+}
+
+.bg-kandis {
+	background-color: #ff4136 !important;
+}
+
+.bg-kerincikanan {
+	background-color: #7fdbff !important;
+}
+
+.bg-lubukdalam {
+	background-color: #85144b !important;
+}
+
+.bg-mempura {
+	background-color: #39cccc !important;
+}
+
+.bg-minas {
+	background-color: #f012be !important;
+}
+
+.bg-pusako {
+	background-color: #3d9970 !important;
+}
+
+.bg-sabakauh {
+	background-color: #b10dc9 !important;
+}
+
+.bg-siak {
+	background-color: #2ecc40 !important;
+}
+
+.bg-sungaiapit {
+	background-color: #aaaaaa !important;
+}
+
+.bg-sungaimandau {
+	background-color: #01ff70 !important;
+}
+
+.bg-tualang {
+	background-color: #ffdc00 !important;
+}
+
+.btn-excel {
+	background-color: #107c41 !important;
+	color: #fff;
+}
+.btn-excel:hover {
+	background-color: #185c37 !important;
+	color: #fff;
+}
+
+.btn-pdf {
+	background-color: #d91112 !important;
+	color: #fff;
+}
+.btn-pdf:hover {
+	background-color: #bf0c04 !important;
+	color: #fff;
+}

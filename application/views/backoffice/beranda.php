@@ -37,9 +37,14 @@
 
 			<section class="content">
 				<div class="container-fluid">
-					<?= $this->magic->id_email($this->session->userdata('id')) ?>
-					<button type="button" class="btn btn-default popSuccess d-none <?php if($this->session->flashdata('done')){echo "testBtn";} ?>">Success</button>
-					<button type="button" class="btn btn-default popDanger d-none <?php if($this->session->flashdata('error')){echo "testBtn";} ?>">Eror</button>
+					<div class="card">
+						<div class="card-header"><h5>Selamat Datang!</h5></div>
+						<div class="card-body">
+							Anda telah login sebagai Admin.</br>
+							Waktu Server: <i class="fa fa-calendar-alt fa-fw"></i> <?= longdate_indo(date('Y-m-d')) ?> | 
+							<i class="fa fa-clock fa-fw"></i><?= date('H:i:s') ?> WIB
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>

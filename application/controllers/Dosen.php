@@ -40,10 +40,10 @@ class Dosen extends CI_Controller {
 	}
 
 	public function tambah() {
-		$this->form_validation->set_rules('nip',		'NIP',				'trim|required|numeric|is_unique[dosen.nip]');
+		$this->form_validation->set_rules('nip',		'NIP',				'trim|required|numeric|is_unique[pegawai.nip]');
 		$this->form_validation->set_rules('nama',		'Nama Lengkap',		'trim|required');
-		$this->form_validation->set_rules('email',		'Email',			'trim|required|is_unique[dosen.email]|valid_email');
-		$this->form_validation->set_rules('user',		'Username',			'trim|required|alpha_dash|is_unique[dosen.username]');
+		$this->form_validation->set_rules('email',		'Email',			'trim|required|is_unique[pegawai.email]|valid_email');
+		$this->form_validation->set_rules('user',		'Username',			'trim|required|alpha_dash|is_unique[pegawai.username]');
 		$this->form_validation->set_rules('password',	'Password',			'trim|required|min_length[5]|max_length[12]');
 		$this->form_validation->set_rules('repass', 	'Ulangi Password',	'matches[password]|required');
 		$this->form_validation->set_rules('jekel',		'Jenis Kelamin',	'trim|required');
@@ -85,7 +85,7 @@ class Dosen extends CI_Controller {
 			$data['title'] 	= "Edit Dosen";
 			$data['action'] = "dosen/edit/".$key;
 			$data['dtdosen'] = $this->Mdosen->getById($key);
-			var_dump($data['dtdosen']);die();
+			// var_dump($data['dtdosen']);die();
 			$this->load->view('backoffice/dosen_form', $data);
 		} else {
 			if (set_value('password')) {

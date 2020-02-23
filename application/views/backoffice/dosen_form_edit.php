@@ -62,14 +62,14 @@
 												<div class="row">
 													<div class="col-sm-6">
 														<div class="icheck-danger d-inline">
-															<input type="radio" name="jekel" value="L" id="jekellk" <?php if($dtdosen && $dtdosen->jekel=="L"){echo "checked";}?>>
+															<input type="radio" name="jekel" value="L" id="jekellk" <?php if($dtdosen->jekel=="L"){echo "checked";}elseif(!$dtdosen){echo "checked";} ?>>
 															<label for="jekellk" style="font-weight: normal !important;">Laki-laki
 															</label>
 														</div>
 													</div>
 													<div class="col-sm-6">
 														<div class="icheck-danger d-inline">
-															<input type="radio" name="jekel" value="P" id="jekelpr" <?php if($dtdosen && $dtdosen->jekel=="P"){echo "checked";}?>>
+															<input type="radio" name="jekel" value="P" id="jekelpr" <?php if($dtdosen->jekel=="P"){echo "checked";}?>>
 															<label for="jekelpr" style="font-weight: normal !important;">Perempuan
 															</label>
 														</div>

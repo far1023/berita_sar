@@ -19,7 +19,7 @@ class Dosen extends CI_Controller {
 		$dt = $this->Mdosen->read();
 
 		foreach ($dt as $value) {
-			$aksi= "<a href='".site_url('dosen/edit/'.$value->id_dosen)."' data-id='".$value->id_dosen."' class='badge badge-warning'>Edit</a> <a href='javascript:void(0)' data-id='".$value->id_dosen."' class='badge badge-danger hapus-dosen'>Delete</a>";
+			$aksi= "<a href='".site_url('dosen/edit/'.$value->id_pegawai)."' data-id='".$value->id_pegawai."' class='badge badge-warning'>Edit</a> <a href='javascript:void(0)' data-id='".$value->id_pegawai."' class='badge badge-danger hapus-dosen'>Delete</a>";
 			$tbody = array();
 			$tbody[] = $value->nip;
 			$tbody[] = $value->nama_lengkap;

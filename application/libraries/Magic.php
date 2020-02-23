@@ -24,9 +24,9 @@ class Magic {
     }
 
     public function user($key) {
-        if ($key==0) {$val="<span class='badge badge-success'>DOSEN</span>";}
-        elseif ($key==1) {$val="<span class='badge badge-info'>MAHASISWA</span>";}
-        elseif ($key==2) {$val="<span class='badge badge-secondary'>CIVITAS AKADEMIK</span>";}
+        if ($key==1) {$val="<span class='badge badge-success'>DOSEN</span>";}
+        elseif ($key==2) {$val="<span class='badge badge-info'>MAHASISWA</span>";}
+        elseif ($key==3) {$val="<span class='badge badge-secondary'>CIVITAS AKADEMIK</span>";}
         return $val;
     }
 }

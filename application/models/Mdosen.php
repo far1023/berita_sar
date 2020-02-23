@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Mdosen extends CI_Model {
 
 	public function read(){
-		return $this->db->get('dosen')->result();	
+		return $this->db->get('pegawai')->result();	
 	}
 
 	public function getById($key) {
-		$hasil = $this->db->where('id_dosen', $key)->limit(1)->get('dosen');
+		$hasil = $this->db->where('id_dosen', $key)->limit(1)->get('pegawai');
 		if ($hasil->num_rows() > 0) {
 			return $hasil->row();
 		} else {
@@ -17,15 +17,15 @@ class Mdosen extends CI_Model {
 	}
 
 	public function create($data) {
-		$this->db->insert('dosen', $data);
+		$this->db->insert('pegawai', $data);
 	}
 
 	public function update($key, $data) {
-		$this->db->where('id_dosen', $key)->update('dosen', $data);
+		$this->db->where('id_dosen', $key)->update('pegawai', $data);
 	}
 
 	public function delete() {
-		$this->db->where('id_dosen', $this->input->post('id_dosen'))->delete('dosen');
+		$this->db->where('id_dosen', $this->input->post('id_dosen'))->delete('pegawai');
 	}
 
 }

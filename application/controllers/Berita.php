@@ -76,7 +76,7 @@ class Berita extends CI_Controller {
 
 					$data = array (
 						'judul'			=> htmlspecialchars(set_value('judul')),
-						'isi_berita'	=> htmlspecialchars(set_value('isi')),
+						'isi_berita'	=> htmlspecialchars_decode(set_value('isi')),
 						'gambar'		=> $gambar,
 						'tagar'			=> $tags,
 						'dibuat_oleh'	=> $this->session->userdata('id'),
@@ -102,7 +102,59 @@ class Berita extends CI_Controller {
 							'id_berita' => $id
 						);
 						$this->Mberita->forUser($u_dt);
+
+						// Enabling error reporting
+						error_reporting(-1);
+						ini_set('display_errors', 'On');
+
+						$fields = NULL;
+						$topics = $user[$i];
+						$message = set_value('judul');
+
+						$res = array();
+						$res['body'] = $message;
+
+						$fields = array(
+							'to' => '/topics/' . $topics,
+							'notification' => $res,
+							'click_action' => "OPEN_ACTIVITY_1",
+						);
+
+						// Set POST variables
+						$url = 'https://fcm.googleapis.com/fcm/send';
+						$server_key =   "AAAA2T9zIks:APA91bEevvifGnW2A15MAtl6fS0k6E3ZEHGMwS8xIECGprZ-OjWx81weUKN8gir1Jo1h_Sd6GtomxzIMhtZSGWoNkxe1rVf-DXBky4aQXQC6S2xtrnKkaC72zq5tkZZ2R7TAp1Mdfax2";
+
+						$headers = array(
+							'Authorization: key=' . $server_key,
+							'Content-Type: application/json'
+						);
+
+						// Open connection
+						$ch = curl_init();
+
+						// Set the url, number of POST vars, POST data
+						curl_setopt($ch, CURLOPT_URL, $url);
+
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+						// Disabling SSL Certificate support temporarly
+						curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+						curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+
+						// Execute post
+						$result = curl_exec($ch);
+						if ($result === FALSE) {
+							echo 'Curl failed: ' . curl_error($ch);
+						}
+
+						// Close connection
+						curl_close($ch);
+
 					}
+
 					redirect('berita');
 				}
 			} else {
@@ -164,7 +216,7 @@ class Berita extends CI_Controller {
 
 					$data = array (
 						'judul'			=> htmlspecialchars(set_value('judul')),
-						'isi_berita'	=> htmlspecialchars(set_value('isi')),
+						'isi_berita'	=> htmlspecialchars_decode(set_value('isi')),
 						'gambar'		=> $gambar,
 						'tagar'			=> $tags,
 						'diedit_oleh'	=> $this->session->userdata('id'),
@@ -199,7 +251,7 @@ class Berita extends CI_Controller {
 			} else {
 				$data = array (
 					'judul'			=> htmlspecialchars(set_value('judul')),
-					'isi_berita'	=> htmlspecialchars(set_value('isi')),
+					'isi_berita'	=> htmlspecialchars_decode(set_value('isi')),
 					'tagar'			=> $tags,
 					'diedit_oleh'	=> $this->session->userdata('id'),
 					'user'			=> $user,

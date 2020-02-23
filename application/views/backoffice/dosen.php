@@ -32,7 +32,6 @@
 			<section class="content-header">
 				<div class="container-fluid"></div>
 			</section>
-
 			<section class="content">
 				<div class="container-fluid">
 					<div class="card">
@@ -109,7 +108,7 @@
 		});
 
 		$('body').on('click', '.hapus-dosen', function () {
-			var id_dosen = $(this).data("id");
+			var id_pegawai = $(this).data("id");
 			if (confirm("Hapus data Dosen?")) {
 				$.ajax({
 					type: "Post",
@@ -119,7 +118,7 @@
 					},
 					dataType: "json",
 					success: function (data) {
-						$("#id_opd_" + id_dosen).remove();
+						$("#id_opd_" + id_pegawai).remove();
 						$("#dtDosen").DataTable().ajax.reload();
 						$('#deleted').click();
 					},

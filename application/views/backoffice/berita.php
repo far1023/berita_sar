@@ -80,7 +80,9 @@
 														<?php endif ?>
 													<?php endfor ?>
 												</td>
-												<td><a href="<?= site_url('berita/edit/'.$value->id_berita) ?>" class="btn btn-sm btn-warning edit-opd">EDIT</a> <a href="<?= site_url('berita/hapus/'.$value->id_berita) ?>" class="btn btn-sm btn-danger edit-opd">HAPUS</a></td>
+												<td>
+													<!-- <a href="<?= site_url('berita/edit/'.$value->id_berita) ?>" class="btn btn-sm btn-warning edit-opd">EDIT</a>  -->
+													<a href="<?= site_url('berita/hapus/'.$value->id_berita) ?>" class="btn btn-sm btn-danger edit-opd">HAPUS</a></td>
 											</tr>
 										<?php endforeach ?>
 									</tbody>

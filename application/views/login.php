@@ -34,7 +34,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-6"><?php echo $cap ?></div>
-                    <div class="col-6"><input type="text" class="form-control form-control-sm" placeholder="Captcha" name="captcha" value="<?= $this->session->userdata('captc'); ?>"></div>
+                    <div class="col-6"><input type="text" class="form-control form-control-sm" placeholder="Captcha" name="captcha" value=""></div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-8"><?= $this->session->userdata('nama'); ?></div>

@@ -21,7 +21,7 @@
                 <li class="nav-item">
                     <a href="<?= site_url('dosen') ?>" class="nav-link <?php if($this->uri->segment(1)=='dosen'){echo 'active';} ?>">
                         <i class="nav-icon fas big-icon fa-users icon-wrap"></i>
-                        <p>Dosen</p>
+                        <p>Pegawai</p>
                     </a>
                 </li>
                 <li class="nav-item">

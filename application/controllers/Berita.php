@@ -76,7 +76,7 @@ class Berita extends CI_Controller {
 
 					$data = array (
 						'judul'			=> htmlspecialchars(set_value('judul')),
-						'isi_berita'	=> htmlspecialchars_decode(set_value('isi')),
+						'isi_berita'	=> strip_tags(htmlspecialchars_decode(set_value('isi'))),
 						'gambar'		=> $gambar,
 						'tagar'			=> $tags,
 						'dibuat_oleh'	=> $this->session->userdata('id'),

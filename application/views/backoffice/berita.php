@@ -5,7 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?= $title ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="<?= site_url();?>assets/img/logo/sikait.png"/>
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/template/plugins/fontawesome-free/css/all.min.css">
 	<!-- overlayScrollbars -->
@@ -48,41 +47,48 @@
 										<table class="table table-striped table-hover dttables">
 											<thead>
 												<tr>
-													<th style="text-align: center;">Judul</th>
-													<th style="text-align: center;">Isi Berita</th>
+													<th style="text-align: center;">Berita</th>
 													<th style="text-align: center;">User</th>
-													<th style="text-align: center;">Tag</th>
+													<th style="text-align: center;">Tags</th>
 													<th style="text-align: center;">Aksi</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php foreach ($berita as $value): ?>
 													<tr>
-														<td><?= $value->judul ?></td>
-														<td><?= htmlspecialchars_decode(htmlspecialchars_decode($value->isi_berita)) ?></td>
+														<td>
+															<p class="text-lg"><a href="<?= site_url('berita/q/'.$value->slug) ?>" class="sar"><?= $value->judul ?></a></p><br>
+															<p><?= $this->magic->trimWords($value->isi_berita) ?></p>
+															User: 
+															<?php $user = explode("_&_", $value->user); ?>
+															<?php $u=count($user); ?>
+															<?php for ($v = 0; $v < $u; $v++) :?>
+																<?= $this->magic->user($user[$v]) ?>
+															<?php endfor ?><br>
+															Tags: 
+															<?php $tag = explode("_&_", $value->tagar); ?>
+															<?php $j=count($tag); ?>
+															<?php for ($i = 0; $i < $j; $i++) :?>
+																<span class="badge badge-dark"><?= $this->magic->id_tag($tag[$i]) ?></span>
+															<?php endfor ?>
+														</td>
 														<td>
 															<?php $user = explode("_&_", $value->user); ?>
 															<?php $u=count($user); ?>
 															<?php for ($v = 0; $v < $u; $v++) :?>
 																<?= $this->magic->user($user[$v]) ?>
-																<?php if (($v+1)%2==0 && ($v+1)!=0): ?>
-																<br>
-															<?php endif ?>
-														<?php endfor ?>
-													</td>
-													<td>
-														<?php $tag = explode("_&_", $value->tagar); ?>
-														<?php $j=count($tag); ?>
-														<?php for ($i = 0; $i < $j; $i++) :?>
-															<span class="badge badge-dark"><?= $this->magic->id_tag($tag[$i]) ?></span>
-															<?php if (($i+1)%2==0 && ($i+1)!=0): ?>
-															<br>
-														<?php endif ?>
-													<?php endfor ?>
-												</td>
-												<td>
-													<!-- <a href="<?= site_url('berita/edit/'.$value->id_berita) ?>" class="btn btn-sm btn-warning edit-opd">EDIT</a>  -->
-													<a href="<?= site_url('berita/hapus/'.$value->id_berita) ?>" class="btn btn-sm btn-danger edit-opd">HAPUS</a></td>
+															<?php endfor ?>
+														</td>
+														<td>
+															<?php $tag = explode("_&_", $value->tagar); ?>
+															<?php $j=count($tag); ?>
+															<?php for ($i = 0; $i < $j; $i++) :?>
+																<span class="badge badge-dark"><?= $this->magic->id_tag($tag[$i]) ?></span>
+															<?php endfor ?>
+														</td>
+														<td>
+														<!-- <a href="<?= site_url('berita/edit/'.$value->id_berita) ?>" class="btn btn-sm btn-warning edit-opd">EDIT</a>  -->
+														<a href="<?= site_url('berita/hapus/'.$value->id_berita) ?>" class="btn btn-sm btn-danger edit-opd">HAPUS</a></td>
 											</tr>
 										<?php endforeach ?>
 									</tbody>
@@ -169,7 +175,13 @@
 				"language" :{
 					"url" : "<?= base_url('plugins/Indonesian.json') ?>",
 					"sEmptyTable" : "Tidads"
-				}
+				},
+				"columnDefs": [
+				{
+					"targets": [ 1, 2 ],
+					"visible": false,
+				},
+				]
 			});
 		} );
 	</script>

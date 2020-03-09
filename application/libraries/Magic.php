@@ -5,6 +5,15 @@ class Magic {
         $this->CI = &get_instance();
     }
 
+    public function trimWords($key) {
+        $str = $key;
+        if( strlen( $key) > 300) {
+            $str = explode( "\n", wordwrap( $key, 300));
+            $str = $str[0] . '...';
+        }
+        return $str;
+    }
+
     public function id_email($key) {
         $this->CI->load->model('Madmin');
         $val = $this->CI->Madmin->getById($key);

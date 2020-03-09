@@ -20,6 +20,14 @@ class Berita extends CI_Controller {
 		$this->load->view('backoffice/berita', $data);
 	}
 
+	public function q($key) {
+		$data['berita'] = $this->Mberita->getBySlug($key);
+		$data['title']	= $data['berita']->judul;
+		$data['link']	= site_url('berita/q/'.$data['berita']->slug);
+
+		$this->load->view('backoffice/berita_baca', $data);
+	}
+
 	public function count_checkbox($dt){
 		if (count($this->input->post('tags'))>0) {
 			return TRUE;
@@ -79,6 +87,7 @@ class Berita extends CI_Controller {
 						'isi_berita'	=> strip_tags(htmlspecialchars_decode(set_value('isi'))),
 						'gambar'		=> $gambar,
 						'tagar'			=> $tags,
+						'slug'			=> $slug.".html",
 						'dibuat_oleh'	=> $this->session->userdata('id'),
 						'user'			=> $user,
 					);
@@ -219,6 +228,7 @@ class Berita extends CI_Controller {
 						'isi_berita'	=> htmlspecialchars_decode(set_value('isi')),
 						'gambar'		=> $gambar,
 						'tagar'			=> $tags,
+						'slug'			=> $slug.".html",
 						'diedit_oleh'	=> $this->session->userdata('id'),
 						'user'			=> $user,
 					);
@@ -253,6 +263,7 @@ class Berita extends CI_Controller {
 					'judul'			=> htmlspecialchars(set_value('judul')),
 					'isi_berita'	=> htmlspecialchars_decode(set_value('isi')),
 					'tagar'			=> $tags,
+						'slug'			=> $slug.".html",
 					'diedit_oleh'	=> $this->session->userdata('id'),
 					'user'			=> $user,
 				);

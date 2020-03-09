@@ -21,6 +21,15 @@ class Mberita extends CI_Model {
 		}
 	}
 
+	public function getByslug($key) {
+		$hasil = $this->db->where('slug', $key)->limit(1)->get('berita');
+		if ($hasil->num_rows() > 0) {
+			return $hasil->row();
+		} else {
+			return array();
+		}
+	}
+
 	public function update($key, $key2) {
 		$this->db->where('id_berita', $key)->update('berita', $key2);		
 	}

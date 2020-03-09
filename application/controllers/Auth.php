@@ -11,6 +11,9 @@ class Auth extends CI_Controller {
 
 	public function index()
 	{
+		if ($this->session->userdata('level')) {
+			redirect('beranda');
+		}
 		$this->form_validation->set_rules('user', 'Username / Email', 'trim|required');
 		$this->form_validation->set_rules('pass', 'Password', 'trim|required');
 		$this->form_validation->set_rules('captcha', 'Kode Captcha', 'required|trim|callback_passCaptcha');
